@@ -1,0 +1,26 @@
+package controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import service.HelloService;
+
+@Controller
+public class HelloController {
+
+    @Autowired
+    HelloService helloService;
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public ResponseEntity hello1() {
+        return new ResponseEntity(helloService.hello(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
+    public String hello2() {
+        return "hello";
+    }
+}
